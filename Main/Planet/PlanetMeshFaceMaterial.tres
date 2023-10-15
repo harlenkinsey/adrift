@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://b58utslx3hw2m"]
+
+[ext_resource type="Shader" path="res://Main/Planet/PlanetMeshFaceShader.gdshader" id="1_gmpm7"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_gmpm7")
+shader_parameter/minHeight = null
+shader_parameter/maxHeight = null

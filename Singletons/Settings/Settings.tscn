@@ -1,0 +1,446 @@
+[gd_scene load_steps=30 format=3 uid="uid://eogljr0nc2dw"]
+
+[ext_resource type="Script" path="res://Singletons/Settings/FOVSlider.cs" id="1_3l380"]
+[ext_resource type="Script" path="res://Singletons/Settings/SettingsContainer.cs" id="1_lrlf0"]
+[ext_resource type="LabelSettings" uid="uid://dqb6xaicum3gr" path="res://Settings_Label_Settings.tres" id="1_poanw"]
+[ext_resource type="Script" path="res://Singletons/Settings/FOVValue.cs" id="1_xpxgm"]
+[ext_resource type="Script" path="res://Singletons/Settings/BrightnessSlider.cs" id="2_djrpm"]
+[ext_resource type="Script" path="res://Singletons/Settings/BrightnessValue.cs" id="3_bdy74"]
+[ext_resource type="Script" path="res://Singletons/Settings/RenderScaleSlider.cs" id="3_vvofe"]
+[ext_resource type="Script" path="res://Singletons/Settings/LODSlider.cs" id="4_4r2g4"]
+[ext_resource type="Script" path="res://Singletons/Settings/RenderScaleValue.cs" id="4_mqnra"]
+[ext_resource type="Script" path="res://Singletons/Settings/LODValue.cs" id="5_ico1c"]
+[ext_resource type="Script" path="res://Singletons/Settings/ViewDistanceSlider.cs" id="5_xxc2g"]
+[ext_resource type="Script" path="res://Singletons/Settings/ViewDistanceValue.cs" id="6_c23pb"]
+[ext_resource type="Script" path="res://Singletons/Settings/AntialiasingSlider.cs" id="6_ty15t"]
+[ext_resource type="Script" path="res://Singletons/Settings/AntialiasingValue.cs" id="7_bmw6a"]
+[ext_resource type="Script" path="res://Singletons/Settings/MasterVolumeSlider.cs" id="13_fk87h"]
+[ext_resource type="Script" path="res://Singletons/Settings/MusicVolumeSlider.cs" id="14_7jxvy"]
+[ext_resource type="Script" path="res://Singletons/Settings/UIVolumeSlider.cs" id="15_1e3xi"]
+[ext_resource type="Script" path="res://Singletons/Settings/MasterVolumeValue.cs" id="16_ab7ar"]
+[ext_resource type="Script" path="res://Singletons/Settings/MusicVolumeValue.cs" id="17_og2cr"]
+[ext_resource type="Script" path="res://Singletons/Settings/UIVolumeValue.cs" id="18_pnhyy"]
+[ext_resource type="Script" path="res://Singletons/Settings/InventoryEditButton.cs" id="19_bqena"]
+[ext_resource type="Script" path="res://Singletons/Settings/MoveForwardEditButton.cs" id="20_ox7qr"]
+[ext_resource type="Script" path="res://Singletons/Settings/MoveBackwardEditButton.cs" id="21_3f03a"]
+[ext_resource type="Script" path="res://Singletons/Settings/MoveLeftEditButton.cs" id="22_0uta1"]
+[ext_resource type="Script" path="res://Singletons/Settings/MoveRightEditButton.cs" id="23_xpk2t"]
+[ext_resource type="Script" path="res://Singletons/Settings/SprintEditButton.cs" id="24_f7ki3"]
+[ext_resource type="Script" path="res://Singletons/Settings/CrouchEditButton.cs" id="24_g600x"]
+[ext_resource type="Script" path="res://Singletons/Settings/JumpEditButton.cs" id="25_wkm0e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_byatl"]
+bg_color = Color(0.133333, 0.133333, 0.133333, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+
+[node name="SettingsContainer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_lrlf0")
+
+[node name="Background" type="Panel" parent="."]
+self_modulate = Color(0.282353, 0.282353, 0.282353, 1)
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="TabContainer" type="TabContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -450.0
+offset_top = -272.5
+offset_right = 450.0
+offset_bottom = 272.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/panel = SubResource("StyleBoxFlat_byatl")
+use_hidden_tabs_for_min_size = true
+
+[node name="Graphics" type="MarginContainer" parent="Background/TabContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/TabContainer/Graphics"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/TabContainer/Graphics/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FOV" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "FOV"
+label_settings = ExtResource("1_poanw")
+
+[node name="Brightness" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Brightness
+"
+label_settings = ExtResource("1_poanw")
+
+[node name="3D Render Scale" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Scales the 3D render buffer. Values lower than 1.0 can be used to speed up 3D rendering at the cost of quality (undersampling)."
+mouse_filter = 1
+text = "3D Render Scale
+"
+label_settings = ExtResource("1_poanw")
+
+[node name="LOD Threshold" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Increase to improve performance at the cost of geometry detail."
+mouse_filter = 1
+text = "LOD Threshold
+"
+label_settings = ExtResource("1_poanw")
+
+[node name="View Distance" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Decrease to improve performance."
+mouse_filter = 1
+text = "View Distance
+"
+label_settings = ExtResource("1_poanw")
+
+[node name="Antialiasing" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+tooltip_text = "Increase to soften edges at the cost of performance."
+mouse_filter = 1
+text = "Antialiasing
+"
+label_settings = ExtResource("1_poanw")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/TabContainer/Graphics/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="FOVSlider" type="HSlider" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+min_value = 60.0
+max_value = 140.0
+value = 90.0
+script = ExtResource("1_3l380")
+
+[node name="BrightnessSlider" type="HSlider" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+max_value = 1.0
+step = 0.01
+value = 1.0
+script = ExtResource("2_djrpm")
+
+[node name="RenderScaleSlider" type="HSlider" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+script = ExtResource("3_vvofe")
+
+[node name="LODSlider" type="HSlider" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+max_value = 1.0
+step = 0.1
+value = 1.0
+script = ExtResource("4_4r2g4")
+
+[node name="ViewDistanceSlider" type="HSlider" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+min_value = 500.0
+max_value = 8000.0
+step = 50.0
+value = 4000.0
+script = ExtResource("5_xxc2g")
+
+[node name="AntialiasingSlider" type="HSlider" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+max_value = 4.0
+value = 1.0
+script = ExtResource("6_ty15t")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Background/TabContainer/Graphics/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="FOVValue" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "0
+"
+label_settings = ExtResource("1_poanw")
+horizontal_alignment = 1
+script = ExtResource("1_xpxgm")
+
+[node name="BrightnessValue" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "0
+"
+label_settings = ExtResource("1_poanw")
+horizontal_alignment = 1
+script = ExtResource("3_bdy74")
+
+[node name="RenderScaleValue" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "0
+"
+label_settings = ExtResource("1_poanw")
+horizontal_alignment = 1
+script = ExtResource("4_mqnra")
+
+[node name="LODValue" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "0
+"
+label_settings = ExtResource("1_poanw")
+horizontal_alignment = 1
+script = ExtResource("5_ico1c")
+
+[node name="ViewDistanceValue" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "0
+"
+label_settings = ExtResource("1_poanw")
+horizontal_alignment = 1
+script = ExtResource("6_c23pb")
+
+[node name="AntialiasingValue" type="Label" parent="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "0
+"
+label_settings = ExtResource("1_poanw")
+horizontal_alignment = 1
+script = ExtResource("7_bmw6a")
+
+[node name="Sounds" type="MarginContainer" parent="Background/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/TabContainer/Sounds"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/TabContainer/Sounds/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MasterVolume" type="Label" parent="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Master Volume"
+label_settings = ExtResource("1_poanw")
+
+[node name="MusicVolume" type="Label" parent="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "Music Volume"
+label_settings = ExtResource("1_poanw")
+
+[node name="UIVolume" type="Label" parent="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+mouse_filter = 1
+text = "UI Volume"
+label_settings = ExtResource("1_poanw")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Background/TabContainer/Sounds/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MasterVolumeSlider" type="HSlider" parent="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+value = 50.0
+script = ExtResource("13_fk87h")
+
+[node name="MusicVolumeSlider" type="HSlider" parent="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+value = 100.0
+script = ExtResource("14_7jxvy")
+
+[node name="UIVolumeSlider" type="HSlider" parent="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+value = 100.0
+script = ExtResource("15_1e3xi")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Background/TabContainer/Sounds/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="MasterVolumeValue" type="Label" parent="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "50
+"
+label_settings = ExtResource("1_poanw")
+horizontal_alignment = 1
+script = ExtResource("16_ab7ar")
+
+[node name="MusicVolumeValue" type="Label" parent="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "100
+"
+label_settings = ExtResource("1_poanw")
+horizontal_alignment = 1
+script = ExtResource("17_og2cr")
+
+[node name="UIVolumeValue" type="Label" parent="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+text = "100
+"
+label_settings = ExtResource("1_poanw")
+horizontal_alignment = 1
+script = ExtResource("18_pnhyy")
+
+[node name="Controls" type="MarginContainer" parent="Background/TabContainer"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Background/TabContainer/Controls"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/TabContainer/Controls/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Inventory" type="Label" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+mouse_filter = 1
+text = "Inventory"
+label_settings = ExtResource("1_poanw")
+
+[node name="MoveForward" type="Label" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+mouse_filter = 1
+text = "Move Forward"
+label_settings = ExtResource("1_poanw")
+
+[node name="MoveBackward" type="Label" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+mouse_filter = 1
+text = "Move Backward"
+label_settings = ExtResource("1_poanw")
+
+[node name="MoveLeft" type="Label" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+mouse_filter = 1
+text = "Move Left"
+label_settings = ExtResource("1_poanw")
+
+[node name="MoveRight" type="Label" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+mouse_filter = 1
+text = "Move Right"
+label_settings = ExtResource("1_poanw")
+
+[node name="Sprint" type="Label" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+mouse_filter = 1
+text = "Sprint"
+label_settings = ExtResource("1_poanw")
+
+[node name="Crouch" type="Label" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+mouse_filter = 1
+text = "Crouch"
+label_settings = ExtResource("1_poanw")
+
+[node name="Jump" type="Label" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 53)
+layout_mode = 2
+mouse_filter = 1
+text = "Jump"
+label_settings = ExtResource("1_poanw")
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Background/TabContainer/Controls/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="InventoryEditButton" type="Button" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Tab"
+script = ExtResource("19_bqena")
+
+[node name="MoveForwardEditButton" type="Button" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "W"
+script = ExtResource("20_ox7qr")
+
+[node name="MoveBackwardEditButton" type="Button" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "S"
+script = ExtResource("21_3f03a")
+
+[node name="MoveLeftEditButton" type="Button" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "A"
+script = ExtResource("22_0uta1")
+
+[node name="MoveRightEditButton" type="Button" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "D"
+script = ExtResource("23_xpk2t")
+
+[node name="SprintEditButton" type="Button" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Shift"
+script = ExtResource("24_f7ki3")
+
+[node name="CrouchEditButton" type="Button" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Ctrl"
+script = ExtResource("24_g600x")
+
+[node name="JumpEditButton" type="Button" parent="Background/TabContainer/Controls/HBoxContainer/VBoxContainer3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Space"
+script = ExtResource("25_wkm0e")
+
+[connection signal="value_changed" from="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2/FOVSlider" to="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3/FOVValue" method="_on_fov_slider_value_changed"]
+[connection signal="value_changed" from="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2/BrightnessSlider" to="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3/BrightnessValue" method="_on_brightness_slider_value_changed"]
+[connection signal="value_changed" from="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2/RenderScaleSlider" to="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3/RenderScaleValue" method="_on_render_scale_slider_value_changed"]
+[connection signal="value_changed" from="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2/LODSlider" to="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3/LODValue" method="_on_lod_slider_value_changed"]
+[connection signal="value_changed" from="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2/ViewDistanceSlider" to="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3/ViewDistanceValue" method="_on_view_distance_slider_value_changed"]
+[connection signal="value_changed" from="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer2/AntialiasingSlider" to="Background/TabContainer/Graphics/HBoxContainer/VBoxContainer3/AntialiasingValue" method="_on_antialiasing_slider_value_changed"]
+[connection signal="value_changed" from="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer2/MasterVolumeSlider" to="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer3/MasterVolumeValue" method="_on_master_volume_slider_value_changed"]
+[connection signal="value_changed" from="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer2/MusicVolumeSlider" to="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer3/MusicVolumeValue" method="_on_music_volume_slider_value_changed"]
+[connection signal="value_changed" from="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer2/UIVolumeSlider" to="Background/TabContainer/Sounds/HBoxContainer/VBoxContainer3/UIVolumeValue" method="_on_ui_volume_slider_value_changed"]
