@@ -41,7 +41,10 @@ public partial class PlanetMeshFace : MeshInstance3D
 
 				Vector3 pointOnUnitCube = Normal + (percent.X - 0.5f) * 2.0f * axisA + (percent.Y - 0.5f) * 2.0f * axisB;
 				Vector3 pointOnUnitSphere = pointOnUnitCube.Normalized();
+				float biomeIndex = Planet.BiomePercentFromPoint(pointOnUnitSphere);
 				Vector3 pointOnPlanet = Planet.PointOnPlanet(pointOnUnitSphere);
+				vertexArray[i] = pointOnPlanet;
+				uvArray[i] = new Vector2(0f, biomeIndex);
 
 				float pointLength = pointOnPlanet.Length();
 				if (pointLength < Planet.minHeight)
@@ -52,8 +55,6 @@ public partial class PlanetMeshFace : MeshInstance3D
 				{
 					Planet.maxHeight = pointLength;
 				}
-
-				vertexArray[i] = pointOnPlanet;
 
 				if (x != resolution - 1 && y != resolution - 1)
 				{
@@ -111,6 +112,6 @@ public partial class PlanetMeshFace : MeshInstance3D
 		ShaderMaterial shaderMaterial = (ShaderMaterial)MaterialOverride;
 		shaderMaterial.SetShaderParameter("minHeight", Planet.minHeight);
 		shaderMaterial.SetShaderParameter("maxHeight", Planet.maxHeight);
-		shaderMaterial.SetShaderParameter("heightColor", Planet.PlanetTexture);
+		shaderMaterial.SetShaderParameter("heightColor", Planet.UpdateBiomeTexture());
 	}
 }

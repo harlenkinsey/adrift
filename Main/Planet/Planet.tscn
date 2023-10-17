@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ds71se8buopqu"]
+[gd_scene load_steps=8 format=3 uid="uid://ds71se8buopqu"]
 
 [ext_resource type="Script" path="res://Main/Planet/Planet.cs" id="1_qdf7o"]
 [ext_resource type="Script" path="res://Main/Planet/PlanetMeshFace.cs" id="2_1vmkm"]
@@ -9,12 +9,7 @@
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vt0bh"]
 fractal_octaves = 1
 
-[sub_resource type="Gradient" id="Gradient_yhluu"]
-offsets = PackedFloat32Array(0, 0.383212, 0.675182, 0.886861)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0.682947, 0.64914, 1, 0, 1, 0, 1, 0.509804, 0.372549, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_s8pq7"]
-gradient = SubResource("Gradient_yhluu")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e5gs1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ahts"]
 radius = 4.0
@@ -24,8 +19,8 @@ script = ExtResource("1_qdf7o")
 NoiseMaps = [SubResource("FastNoiseLite_47ol6"), SubResource("FastNoiseLite_vt0bh")]
 Radius = 3.0
 Resolution = 50
-MinHeight = 0.4
-PlanetTexture = SubResource("GradientTexture1D_s8pq7")
+MinHeight = 0.6
+BiomeNoise = SubResource("FastNoiseLite_e5gs1")
 
 [node name="Up" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Planet")]
 material_override = ExtResource("2_868gb")

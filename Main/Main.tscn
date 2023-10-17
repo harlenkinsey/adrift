@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cr54lal0m8w80"]
+[gd_scene load_steps=6 format=3 uid="uid://cr54lal0m8w80"]
 
 [ext_resource type="PackedScene" uid="uid://eogljr0nc2dw" path="res://Singletons/Settings/Settings.tscn" id="1_3nbcj"]
 [ext_resource type="PackedScene" uid="uid://cejcdf35mfnhb" path="res://Main/PauseMenu/PauseMenu.tscn" id="1_f5yot"]
 [ext_resource type="PackedScene" uid="uid://b3xil6uro4oxr" path="res://Main/Player/Player.tscn" id="2_d6xof"]
 [ext_resource type="PackedScene" uid="uid://ds71se8buopqu" path="res://Main/Planet/Planet.tscn" id="3_6nht1"]
+[ext_resource type="Script" path="res://Main/ThirdPersonCamera.cs" id="3_g25ws"]
 
 [node name="Main" type="Node3D"]
 
@@ -18,6 +19,8 @@ transform = Transform3D(1, 0, 0, 0, 0.824462, 0.565917, 0, -0.565917, 0.824462, 
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -220.599, 16.5508, 0)
+current = true
+script = ExtResource("3_g25ws")
 
 [node name="Planet" parent="." instance=ExtResource("3_6nht1")]
 transform = Transform3D(50, 0, 0, 0, 50, 0, 0, 0, 50, 0, 0, 0)

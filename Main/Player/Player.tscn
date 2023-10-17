@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3xil6uro4oxr"]
 
-[ext_resource type="Script" path="res://Main/Player/Player2.cs" id="1_dinq4"]
+[ext_resource type="Script" path="res://Main/Player/Player.cs" id="1_cpo0k"]
 [ext_resource type="Script" path="res://Main/Camera3D.cs" id="2_ourgw"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ocn5j"]
@@ -20,14 +20,13 @@ axis_lock_angular_z = true
 custom_integrator = true
 continuous_cd = true
 max_contacts_reported = 1
-script = ExtResource("1_dinq4")
+script = ExtResource("1_cpo0k")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ocn5j")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49437, -0.501816)
-current = true
 script = ExtResource("2_ourgw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

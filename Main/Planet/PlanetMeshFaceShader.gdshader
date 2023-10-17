@@ -12,7 +12,7 @@ void vertex() {
 
 void fragment() {
 	float t = height / (maxHeight - minHeight) - (minHeight / (maxHeight - minHeight));
-	vec3 color = texture(heightColor, vec2(t, 0.0)).rgb;
+	vec3 color = texture(heightColor, vec2(t, UV.y)).rgb;
 	ALBEDO = color;
 }
 

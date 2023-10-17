@@ -40,7 +40,7 @@ public partial class SettingsManager : Node
 	public delegate void CrouchChangedEventHandler(string value);
 	[Signal]
 	public delegate void JumpChangedEventHandler(string value);
-	
+
 
 	public Dictionary<string, string> Settings = new Dictionary<string, string>()
 	{
@@ -69,7 +69,7 @@ public partial class SettingsManager : Node
 	{
 		Persistence = GetNode<Persistence>("/root/Persistence");
 		Persistence.LoadSettings();
-		
+
 		SetFOV(float.Parse(Settings["FOV"]));
 		SetViewDistance(float.Parse(Settings["ViewDistance"]));
 		SetBrightness(float.Parse(Settings["Brightness"]));
@@ -89,7 +89,7 @@ public partial class SettingsManager : Node
 
 		StateMachine.ChangeState(new SettingsState_InterfaceHidden(this));
 	}
-	
+
 	public override void _Process(double delta)
 	{
 		StateMachine.Update();
@@ -170,7 +170,7 @@ public partial class SettingsManager : Node
 		UpdateAction("UI_Access_Inventory", value);
 		EmitSignal(SignalName.AccessInventoryChanged, value.ToString());
 	}
-	
+
 	public void SetMoveForward(Key value)
 	{
 		Settings["MoveForward"] = value.ToString();
@@ -308,7 +308,7 @@ public class SettingsState_KeybindEdit : IState
 	public void Exit()
 	{
 	}
-	
+
 	public void _Input(InputEvent @event)
 	{
 	}
