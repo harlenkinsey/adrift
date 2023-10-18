@@ -5,11 +5,15 @@
 [ext_resource type="Material" uid="uid://b58utslx3hw2m" path="res://Main/Planet/PlanetMeshFaceMaterial.tres" id="2_868gb"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_47ol6"]
+noise_type = 3
+frequency = 0.03
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vt0bh"]
-fractal_octaves = 1
+noise_type = 3
+frequency = 0.03
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_e5gs1"]
+noise_type = 3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ahts"]
 radius = 4.0
@@ -18,9 +22,11 @@ radius = 4.0
 script = ExtResource("1_qdf7o")
 NoiseMaps = [SubResource("FastNoiseLite_47ol6"), SubResource("FastNoiseLite_vt0bh")]
 Radius = 3.0
-Resolution = 50
+Resolution = 100
 MinHeight = 0.6
 BiomeNoise = SubResource("FastNoiseLite_e5gs1")
+BiomeAmplitude = 0.3
+BiomeOffset = 0.6
 
 [node name="Up" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Planet")]
 material_override = ExtResource("2_868gb")

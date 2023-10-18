@@ -21,9 +21,12 @@ public partial class Planet : Node3D
 	public PlanetBiome[] Biomes;
 	[Export]
 	public FastNoiseLite BiomeNoise;
+	[Export]
 	public float BiomeAmplitude = .1f;
+	[Export]
 	public float BiomeOffset = .3f;
-	public float BiomeBlend = 0.2f; // Between 0.0 and 1.0
+	[Export]
+	public float BiomeBlend = 0.5f; // Between 0.0 and 1.0
 
 	public float minHeight = 9999f;
 	public float maxHeight = 0f;
@@ -98,7 +101,7 @@ public partial class Planet : Node3D
 		for (int i = 0; i < numOfBiomes; i++)
 		{
 			PlanetBiome newBiome = new PlanetBiome();
-			newBiome.Initialize();
+			newBiome.Initialize(i);
 			biomes.Add(newBiome);
 		}
 
