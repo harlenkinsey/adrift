@@ -1,19 +1,23 @@
-[gd_scene load_steps=8 format=3 uid="uid://ds71se8buopqu"]
+[gd_scene load_steps=10 format=3 uid="uid://ds71se8buopqu"]
 
 [ext_resource type="Script" path="res://Main/Planet/Planet.cs" id="1_qdf7o"]
 [ext_resource type="Script" path="res://Main/Planet/PlanetMeshFace.cs" id="2_1vmkm"]
 [ext_resource type="Material" uid="uid://b58utslx3hw2m" path="res://Main/Planet/PlanetMeshFaceMaterial.tres" id="2_868gb"]
+[ext_resource type="PackedScene" uid="uid://dim8mol5b830f" path="res://Main/Water/Water.tscn" id="4_ruvbk"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_47ol6"]
-noise_type = 3
-frequency = 0.03
+seed = 9
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vt0bh"]
-noise_type = 3
-frequency = 0.03
+seed = 9
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_e5gs1"]
-noise_type = 3
+[sub_resource type="Gradient" id="Gradient_wdii5"]
+offsets = PackedFloat32Array(0, 0.265896, 0.578035, 1)
+colors = PackedColorArray(0, 0, 1, 1, 0.597657, 0.558646, 0, 1, 0, 0.454902, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_cknu2"]
+gradient = SubResource("Gradient_wdii5")
+width = 128
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ahts"]
 radius = 4.0
@@ -21,12 +25,9 @@ radius = 4.0
 [node name="Planet" type="Node3D"]
 script = ExtResource("1_qdf7o")
 NoiseMaps = [SubResource("FastNoiseLite_47ol6"), SubResource("FastNoiseLite_vt0bh")]
-Radius = 3.0
-Resolution = 100
-MinHeight = 0.6
-BiomeNoise = SubResource("FastNoiseLite_e5gs1")
-BiomeAmplitude = 0.3
-BiomeOffset = 0.6
+Radius = 64.0
+NoiseMinHeight = 0.5
+PlanetTexture = SubResource("GradientTexture1D_cknu2")
 
 [node name="Up" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Planet")]
 material_override = ExtResource("2_868gb")
@@ -79,3 +80,5 @@ gravity_direction = Vector3(0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_6ahts")
+
+[node name="Water" parent="." instance=ExtResource("4_ruvbk")]

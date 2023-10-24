@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Player2 : RigidBody3D
+public partial class Player : RigidBody3D
 {
 	public const float Speed = 5f;
 	public const float JumpVelocity = 5f;

@@ -1,8 +1,4 @@
 using Godot;
-using System;
-using System.Buffers;
-using System.Collections.Generic;
-using System.Linq;
 
 public partial class Planet : Node3D
 {
@@ -15,32 +11,35 @@ public partial class Planet : Node3D
 	[Export]
 	public int Resolution = 200;
 	[Export]
-	public float MinHeight = 1f;
+	public float NoiseMinHeight = 1f;
 	[Export]
 	public bool UseFirstLayerAsMask = true;
-	public PlanetBiome[] Biomes;
 	[Export]
-	public FastNoiseLite BiomeNoise;
-	[Export]
-	public float BiomeAmplitude = .1f;
-	[Export]
-	public float BiomeOffset = .3f;
-	[Export]
-	public float BiomeBlend = 0.5f; // Between 0.0 and 1.0
+	public GradientTexture1D PlanetTexture;
 
+	/*
+		Both minHeight and maxHeight are used to set the texture color base on elevation
+	*/
 	public float minHeight = 9999f;
 	public float maxHeight = 0f;
 
 	public override void _Ready()
 	{
-		InitializeBiomes(3);
-		OnDataChanged();
-	}
-
-	public void OnDataChanged()
-	{
 		minHeight = 9999f;
 		maxHeight = 0f;
+
+		/*
+			- Scales the planet's gravity field based on its radius
+		*/
+		Area3D GravityField = (Area3D)GetChild(6);
+		GravityField.Transform = new Transform3D(Basis.FromScale(Vector3.One * Radius), GravityField.Transform.Origin);
+
+		/*
+			- Scales the planet's water mesh based on its radius and the water level
+		*/
+		float waterLevel = 1.06f;
+		Node3D waterMesh = (Node3D)GetChild(7);
+		waterMesh.Transform = new Transform3D(Basis.FromScale(Vector3.One * Radius * waterLevel), waterMesh.Transform.Origin);
 
 		Godot.Collections.Array<Node> children = GetChildren();
 
@@ -58,75 +57,22 @@ public partial class Planet : Node3D
 
 		float baseElevation = NoiseMaps[0].GetNoise3Dv(pointOnSphere * 100f);
 		baseElevation = (baseElevation + 1f) / 2f * Amplitude;
-		baseElevation = Mathf.Max(0f, baseElevation - MinHeight);
+		baseElevation = Mathf.Max(0f, baseElevation - NoiseMinHeight); // makes it so that baseElevation >= 0
 
+		/*
+			- Subsequent noise layers get filtered by the first layer
+			- This makes it so that peaks from subsequent layers don't pop out of the flat portion (often the sea) of the planet
+		*/
 		float mask = UseFirstLayerAsMask ? baseElevation : 1f;
 
 		foreach (FastNoiseLite noiseMap in NoiseMaps)
 		{
 			float levelElevation = noiseMap.GetNoise3Dv(pointOnSphere * 100f);
 			levelElevation = (levelElevation + 1f) / 2f * Amplitude;
-			levelElevation = Mathf.Max(0f, levelElevation - MinHeight) * mask;
+			levelElevation = Mathf.Max(0f, levelElevation - NoiseMinHeight) * mask;
 			elevation += levelElevation;
 		}
 
 		return pointOnSphere * Radius * (elevation + 1f);
 	}
-
-	public ImageTexture UpdateBiomeTexture()
-	{
-		ImageTexture imageTexture;
-		Image dynamicImage;
-
-		int height = Biomes.Length;
-
-		Byte[] data = new Byte[0];
-		int width = Biomes[0].Gradient.Width;
-
-		foreach (PlanetBiome biome in Biomes)
-		{
-			data = data.Concat(biome.Gradient.GetImage().GetData()).ToArray();
-		}
-
-		dynamicImage = Image.CreateFromData(width, height, false, Image.Format.Rgba8, data);
-
-		imageTexture = ImageTexture.CreateFromImage(dynamicImage);
-		return imageTexture;
-	}
-
-	public void InitializeBiomes(int numOfBiomes)
-	{
-		List<PlanetBiome> biomes = new List<PlanetBiome>();
-
-		for (int i = 0; i < numOfBiomes; i++)
-		{
-			PlanetBiome newBiome = new PlanetBiome();
-			newBiome.Initialize(i);
-			biomes.Add(newBiome);
-		}
-
-		Biomes = biomes.ToArray();
-	}
-
-	public float BiomePercentFromPoint(Vector3 pointOnUnitSphere)
-	{
-		float heightPercent = (pointOnUnitSphere.Y + 1f) / 2f;
-		heightPercent += ((BiomeNoise.GetNoise3Dv(pointOnUnitSphere * 100f) + 1f / 2f) - BiomeOffset) * BiomeAmplitude;
-		float biomeIndex = 0f;
-		float numberOfBiomes = Biomes.Length;
-
-		float blendRange = BiomeBlend / 2f + 0.0001f;
-
-		for (int i = 0; i < numberOfBiomes; i++)
-		{
-			float distance = heightPercent - Biomes[i].StartHeight;
-			float lerpValue = Mathf.Clamp(Mathf.InverseLerp(-blendRange, blendRange, distance), 0f, 1f);
-			float weight = lerpValue;
-			biomeIndex *= 1f - weight;
-			biomeIndex += i * weight;
-		}
-
-		return biomeIndex / Mathf.Max(1f, numberOfBiomes - 1f);
-	}
-
 }

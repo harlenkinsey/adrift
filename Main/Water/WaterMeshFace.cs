@@ -1,10 +1,10 @@
 using Godot;
 using System;
 
-public partial class PlanetMeshFace : MeshInstance3D
+public partial class WaterMeshFace : MeshInstance3D
 {
 	[Export]
-	Planet Planet;
+	Water Water;
 	[Export]
 	Vector3 Normal;
 	public void RegenerateMesh()
@@ -17,7 +17,7 @@ public partial class PlanetMeshFace : MeshInstance3D
 		Vector3[] normalArray = new Vector3[1];
 		int[] indexArray = new int[1];
 
-		int resolution = Planet.Resolution;
+		int resolution = Water.Resolution;
 
 		int numVertices = resolution * resolution;
 
@@ -57,18 +57,9 @@ public partial class PlanetMeshFace : MeshInstance3D
 				Vector3 pointOnUnitCube = Normal + (percent.X - 0.5f) * 2.0f * axisA + (percent.Y - 0.5f) * 2.0f * axisB;
 				Vector3 pointOnUnitSphere = pointOnUnitCube.Normalized();
 
-				Vector3 pointOnPlanet = Planet.PointOnPlanet(pointOnUnitSphere);
-				vertexArray[i] = pointOnPlanet;
+				vertexArray[i] = pointOnUnitSphere * Water.Radius;
+				uvArray[i] = percent;
 
-				float pointLength = pointOnPlanet.Length();
-				if (pointLength < Planet.minHeight)
-				{
-					Planet.minHeight = pointLength;
-				}
-				if (pointLength > Planet.maxHeight)
-				{
-					Planet.maxHeight = pointLength;
-				}
 
 				if (x != resolution - 1 && y != resolution - 1)
 				{
@@ -123,12 +114,5 @@ public partial class PlanetMeshFace : MeshInstance3D
 		ArrayMesh mesh = new ArrayMesh();
 		mesh.AddSurfaceFromArrays(Mesh.PrimitiveType.Triangles, arrays);
 		this.Mesh = mesh;
-
-		CreateTrimeshCollision();
-
-		ShaderMaterial shaderMaterial = (ShaderMaterial)MaterialOverride;
-		shaderMaterial.SetShaderParameter("minHeight", Planet.minHeight - 1f);
-		shaderMaterial.SetShaderParameter("maxHeight", Planet.maxHeight + 1f);
-		shaderMaterial.SetShaderParameter("heightColor", Planet.PlanetTexture);
 	}
 }
