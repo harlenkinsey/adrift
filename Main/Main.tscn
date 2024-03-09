@@ -1,17 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://cr54lal0m8w80"]
+[gd_scene load_steps=6 format=3 uid="uid://cr54lal0m8w80"]
 
 [ext_resource type="PackedScene" uid="uid://eogljr0nc2dw" path="res://Singletons/Settings/Settings.tscn" id="1_3nbcj"]
 [ext_resource type="PackedScene" uid="uid://cejcdf35mfnhb" path="res://Main/PauseMenu/PauseMenu.tscn" id="1_f5yot"]
 [ext_resource type="PackedScene" uid="uid://b3xil6uro4oxr" path="res://Main/Player/Player.tscn" id="2_d6xof"]
 [ext_resource type="PackedScene" uid="uid://ds71se8buopqu" path="res://Main/Planet/Planet.tscn" id="3_6nht1"]
 [ext_resource type="Script" path="res://Main/ThirdPersonCamera.cs" id="3_g25ws"]
-[ext_resource type="Material" uid="uid://xhmf4l7bc5lt" path="res://Main/Water/WaterMeshFaceMaterial.tres" id="6_xuj7b"]
-[ext_resource type="PackedScene" uid="uid://dim8mol5b830f" path="res://Main/Water/Water.tscn" id="7_xtvxa"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_v05q1"]
-size = Vector3(10, 1.23313, 21.5729)
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_7c44d"]
 
 [node name="Main" type="Node3D"]
 
@@ -25,26 +18,10 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 0.824462, 0.565917, 0, -0.565917, 0.824462, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -88.5281, 4.22411, 0)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -35.3499, 4.22411, 0)
 script = ExtResource("3_g25ws")
 
 [node name="Player" parent="." instance=ExtResource("2_d6xof")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -82.3383, 0.74559, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1601, 0.74559, 0)
 
 [node name="Planet" parent="." instance=ExtResource("3_6nht1")]
-Resolution = 100
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -128.678, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("BoxShape3D_v05q1")
-
-[node name="water" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
-material_override = ExtResource("6_xuj7b")
-mesh = SubResource("PlaneMesh_7c44d")
-skeleton = NodePath("../..")
-
-[node name="Water" parent="." instance=ExtResource("7_xtvxa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -209.761, 0, 0)

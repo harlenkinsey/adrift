@@ -1,84 +1,56 @@
-[gd_scene load_steps=10 format=3 uid="uid://ds71se8buopqu"]
+[gd_scene load_steps=14 format=3 uid="uid://ds71se8buopqu"]
 
 [ext_resource type="Script" path="res://Main/Planet/Planet.cs" id="1_qdf7o"]
-[ext_resource type="Script" path="res://Main/Planet/PlanetMeshFace.cs" id="2_1vmkm"]
-[ext_resource type="Material" uid="uid://b58utslx3hw2m" path="res://Main/Planet/PlanetMeshFaceMaterial.tres" id="2_868gb"]
+[ext_resource type="Shader" path="res://Main/Planet/Planet.gdshader" id="2_rdyfm"]
+[ext_resource type="Texture2D" uid="uid://dnrtc3s2xrvqi" path="res://Main/Planet/GrassTexture.jpg" id="3_6kmhq"]
 [ext_resource type="PackedScene" uid="uid://dim8mol5b830f" path="res://Main/Water/Water.tscn" id="4_ruvbk"]
+[ext_resource type="Texture2D" uid="uid://baa57r0nsqvcj" path="res://Main/Planet/MountainNormalMap.png" id="4_rwaeu"]
+[ext_resource type="Texture2D" uid="uid://8qdvopqnhtgj" path="res://Main/Planet/MountainTexture.jpg" id="5_qljea"]
+[ext_resource type="Texture2D" uid="uid://bucwsnu8kco2v" path="res://Main/Planet/SandNormalMap.png" id="6_a2tlm"]
+[ext_resource type="Texture2D" uid="uid://bl7crldm5ssnk" path="res://Main/Planet/SandTexture.jpg" id="7_wrvuj"]
+[ext_resource type="Script" path="res://Main/Planet/GravityField.cs" id="8_dsleg"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_47ol6"]
-seed = 9
+frequency = 0.015
+fractal_ping_pong_strength = 4.0
+cellular_distance_function = 2
+cellular_jitter = 1.0
+cellular_return_type = 0
+domain_warp_type = 2
+domain_warp_fractal_type = 2
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_vt0bh"]
-seed = 9
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1j8e4"]
 
-[sub_resource type="Gradient" id="Gradient_wdii5"]
-offsets = PackedFloat32Array(0, 0.265896, 0.578035, 1)
-colors = PackedColorArray(0, 0, 1, 1, 0.597657, 0.558646, 0, 1, 0, 0.454902, 0, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_cknu2"]
-gradient = SubResource("Gradient_wdii5")
-width = 128
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_48akt"]
+render_priority = 0
+shader = ExtResource("2_rdyfm")
+shader_parameter/minHeight = null
+shader_parameter/maxHeight = null
+shader_parameter/sandTexture = ExtResource("7_wrvuj")
+shader_parameter/sandNormal = ExtResource("6_a2tlm")
+shader_parameter/mountainTexture = ExtResource("5_qljea")
+shader_parameter/mountainNormal = ExtResource("4_rwaeu")
+shader_parameter/grassTexture = ExtResource("3_6kmhq")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6ahts"]
 radius = 4.0
 
 [node name="Planet" type="Node3D"]
 script = ExtResource("1_qdf7o")
-NoiseMaps = [SubResource("FastNoiseLite_47ol6"), SubResource("FastNoiseLite_vt0bh")]
-Radius = 64.0
-NoiseMinHeight = 0.5
-PlanetTexture = SubResource("GradientTexture1D_cknu2")
+NoiseMaps = [SubResource("FastNoiseLite_47ol6"), SubResource("FastNoiseLite_1j8e4")]
+PlanetMaterial = SubResource("ShaderMaterial_48akt")
 
-[node name="Up" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Planet")]
-material_override = ExtResource("2_868gb")
-skeleton = NodePath("")
-script = ExtResource("2_1vmkm")
-Planet = NodePath("..")
-Normal = Vector3(0, 1, 0)
-
-[node name="Down" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Planet")]
-material_override = ExtResource("2_868gb")
-skeleton = NodePath("")
-script = ExtResource("2_1vmkm")
-Planet = NodePath("..")
-Normal = Vector3(0, -1, 0)
-
-[node name="Left" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Planet")]
-material_override = ExtResource("2_868gb")
-skeleton = NodePath("")
-script = ExtResource("2_1vmkm")
-Planet = NodePath("..")
-Normal = Vector3(-1, 0, 0)
-
-[node name="Right" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Planet")]
-material_override = ExtResource("2_868gb")
-skeleton = NodePath("")
-script = ExtResource("2_1vmkm")
-Planet = NodePath("..")
-Normal = Vector3(1, 0, 0)
-
-[node name="Front" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Planet")]
-material_override = ExtResource("2_868gb")
-skeleton = NodePath("")
-script = ExtResource("2_1vmkm")
-Planet = NodePath("..")
-Normal = Vector3(0, 0, 1)
-
-[node name="Back" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Planet")]
-material_override = ExtResource("2_868gb")
-skeleton = NodePath("")
-script = ExtResource("2_1vmkm")
-Planet = NodePath("..")
-Normal = Vector3(0, 0, -1)
-
-[node name="Area3D" type="Area3D" parent="."]
+[node name="GravityField" type="Area3D" parent="."]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
 gravity_space_override = 3
 gravity_point = true
 gravity_point_center = Vector3(0, 0, 0)
 gravity_direction = Vector3(0, 0, 0)
+script = ExtResource("8_dsleg")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GravityField"]
 shape = SubResource("SphereShape3D_6ahts")
 
 [node name="Water" parent="." instance=ExtResource("4_ruvbk")]
+
+[connection signal="body_entered" from="GravityField" to="GravityField" method="_on_body_entered"]

@@ -13,7 +13,8 @@ public partial class Player : RigidBody3D
 	{
 		State = state;
 
-		LocalGravity = state.TotalGravity.Normalized();
+		//LocalGravity = state.TotalGravity.Normalized();
+		LocalGravity = Vector3.Up;
 
 		if (IsOnFloor(state) && IsJumping)
 		{

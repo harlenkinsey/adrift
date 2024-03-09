@@ -13,7 +13,7 @@ albedo_color = Color(0, 1, 0, 1)
 emission_enabled = true
 emission = Color(0.333333, 0.333333, 0.333333, 1)
 
-[node name="RigidBody3D" type="RigidBody3D"]
+[node name="Player" type="RigidBody3D"]
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
@@ -28,6 +28,7 @@ shape = SubResource("CapsuleShape3D_ocn5j")
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.49437, -0.501816)
 current = true
+near = 0.001
 script = ExtResource("2_ourgw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

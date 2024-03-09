@@ -3,19 +3,17 @@ using System;
 
 public partial class Water : Node3D
 {
-	[Export]
-	public int Resolution = 200;
-	[Export]
+	public int Resolution = 100;
 	public float Radius = 1f;
 
-	public override void _Ready()
+	public void Initialize()
 	{
-		Godot.Collections.Array<Node> children = GetChildren();
+		MeshInstance3D child = (MeshInstance3D)GetChild(0);
+		SphereMesh waterMesh = (SphereMesh)child.Mesh;
 
-		for (int i = 0; i < 6; i++)
-		{
-			WaterMeshFace face = (WaterMeshFace)children[i];
-			face.RegenerateMesh();
-		}
+		waterMesh.Radius = Radius;
+		waterMesh.Height = Radius * 2f;
+		waterMesh.RadialSegments = Resolution;
+		waterMesh.Rings = Resolution / 2;
 	}
 }

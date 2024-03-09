@@ -262,7 +262,6 @@ public class SettingsState_InterfaceVisible : IState
 			owner.StateMachine.ChangeState(new SettingsState_InterfaceHidden(owner));
 		}
 	}
-
 }
 
 public class SettingsState_InterfaceHidden : IState

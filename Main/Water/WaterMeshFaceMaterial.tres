@@ -5,4 +5,4 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_jtjub")
-shader_parameter/ColorParameter = Color(0, 0, 0.803922, 1)
+shader_parameter/ColorParameter = Color(0, 0, 0.596078, 1)

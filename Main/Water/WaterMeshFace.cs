@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class WaterMeshFace : MeshInstance3D
 {
@@ -7,6 +8,9 @@ public partial class WaterMeshFace : MeshInstance3D
 	Water Water;
 	[Export]
 	Vector3 Normal;
+	[Export]
+	string Face;
+
 	public void RegenerateMesh()
 	{
 		var surfaceArray = new Godot.Collections.Array();
@@ -59,7 +63,6 @@ public partial class WaterMeshFace : MeshInstance3D
 
 				vertexArray[i] = pointOnUnitSphere * Water.Radius;
 				uvArray[i] = percent;
-
 
 				if (x != resolution - 1 && y != resolution - 1)
 				{

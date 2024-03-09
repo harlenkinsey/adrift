@@ -1,55 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dim8mol5b830f"]
+[gd_scene load_steps=4 format=3 uid="uid://dim8mol5b830f"]
 
 [ext_resource type="Script" path="res://Main/Water/Water.cs" id="1_ld70o"]
 [ext_resource type="Material" uid="uid://xhmf4l7bc5lt" path="res://Main/Water/WaterMeshFaceMaterial.tres" id="2_vp7cv"]
-[ext_resource type="Script" path="res://Main/Water/WaterMeshFace.cs" id="2_ylals"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_66gka"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_v0kyf"]
+[sub_resource type="SphereMesh" id="SphereMesh_mmofg"]
 
 [node name="Water" type="Node3D"]
 script = ExtResource("1_ld70o")
-Resolution = 50
 
-[node name="Up" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Water")]
+[node name="SphereMesh" type="MeshInstance3D" parent="."]
 material_override = ExtResource("2_vp7cv")
-mesh = SubResource("PlaneMesh_66gka")
-script = ExtResource("2_ylals")
-Water = NodePath("..")
-Normal = Vector3(0, 1, 0)
-
-[node name="Down" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Water")]
-material_override = ExtResource("2_vp7cv")
-mesh = SubResource("PlaneMesh_v0kyf")
-script = ExtResource("2_ylals")
-Water = NodePath("..")
-Normal = Vector3(0, -1, 0)
-
-[node name="Left" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Water")]
-material_override = ExtResource("2_vp7cv")
-mesh = SubResource("PlaneMesh_v0kyf")
-script = ExtResource("2_ylals")
-Water = NodePath("..")
-Normal = Vector3(-1, 0, 0)
-
-[node name="Right" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Water")]
-material_override = ExtResource("2_vp7cv")
-mesh = SubResource("PlaneMesh_v0kyf")
-script = ExtResource("2_ylals")
-Water = NodePath("..")
-Normal = Vector3(1, 0, 0)
-
-[node name="Front" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Water")]
-material_override = ExtResource("2_vp7cv")
-mesh = SubResource("PlaneMesh_v0kyf")
-script = ExtResource("2_ylals")
-Water = NodePath("..")
-Normal = Vector3(0, 0, 1)
-
-[node name="Back" type="MeshInstance3D" parent="." node_paths=PackedStringArray("Water")]
-material_override = ExtResource("2_vp7cv")
-mesh = SubResource("PlaneMesh_v0kyf")
-script = ExtResource("2_ylals")
-Water = NodePath("..")
-Normal = Vector3(0, 0, -1)
+mesh = SubResource("SphereMesh_mmofg")
