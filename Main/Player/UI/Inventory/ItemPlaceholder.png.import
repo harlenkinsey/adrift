@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cncehvu3sjqa8"
-path="res://.godot/imported/LightningBoltIcon.png-083018b55ca1f5c02a065a02ee691372.ctex"
+uid="uid://crjhleqs0mwa8"
+path="res://.godot/imported/ItemPlaceholder.png-9211e8ac4acb54f461f811cc6c16d555.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main/Player/UI/LightningBoltIcon.png"
-dest_files=["res://.godot/imported/LightningBoltIcon.png-083018b55ca1f5c02a065a02ee691372.ctex"]
+source_file="res://Main/Player/UI/Inventory/ItemPlaceholder.png"
+dest_files=["res://.godot/imported/ItemPlaceholder.png-9211e8ac4acb54f461f811cc6c16d555.ctex"]
 
 [params]
 

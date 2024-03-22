@@ -13,8 +13,7 @@ public partial class Player : RigidBody3D
 	{
 		State = state;
 
-		//LocalGravity = state.TotalGravity.Normalized();
-		LocalGravity = Vector3.Up;
+		LocalGravity = state.TotalGravity.Normalized();
 
 		if (IsOnFloor(state) && IsJumping)
 		{
@@ -32,13 +31,13 @@ public partial class Player : RigidBody3D
 			state.LinearVelocity += movementDirection * 0.5f;
 		}
 
-		OrientCharacter(state);
+		//OrientCharacter(state);
 	}
 
 	public override void _Process(double delta)
 	{
 		Vector2 mouseInput = Input.GetLastMouseVelocity();
-		State.Transform = State.Transform.Rotated(-LocalGravity, -mouseInput.X * (float)delta * 0.001f);
+		State.Transform = State.Transform.RotatedLocal(-LocalGravity, -mouseInput.X * (float)delta * 0.001f);
 	}
 
 	public void OrientCharacter(PhysicsDirectBodyState3D state)

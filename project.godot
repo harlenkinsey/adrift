@@ -20,6 +20,7 @@ SceneManager="*res://Singletons/SceneManager.cs"
 Persistence="*res://Singletons/Persistence.cs"
 SettingsManager="*res://Singletons/Settings/SettingsManager.cs"
 PlayerVariables="*res://Singletons/PlayerVariables.cs"
+HudManager="*res://Singletons/HUDManager.cs"
 
 [display]
 

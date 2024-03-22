@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://burx187b2q8f2"]
+
+[ext_resource type="Texture2D" uid="uid://crjhleqs0mwa8" path="res://Main/Player/UI/Inventory/ItemPlaceholder.png" id="1_lopkq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws0aw"]
+bg_color = Color(0.167969, 0.167969, 0.167969, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.933333, 0.933333, 0.933333, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_us83v"]
+font_size = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi41u"]
+
+[node name="ItemSlot" type="Panel"]
+modulate = Color(1, 1, 1, 0.780392)
+custom_minimum_size = Vector2(256, 256)
+theme_override_styles/panel = SubResource("StyleBoxFlat_ws0aw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -128.0
+offset_right = 127.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="CountLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "x100"
+label_settings = SubResource("LabelSettings_us83v")
+
+[node name="IconTextureRect" type="TextureRect" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 183)
+layout_mode = 2
+texture = ExtResource("1_lopkq")
+expand_mode = 2
+
+[node name="DurabilityProgressBar" type="ProgressBar" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+theme_override_constants/outline_size = 0
+theme_override_styles/fill = SubResource("StyleBoxFlat_gi41u")
+value = 50.0
+show_percentage = false

@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://dl4clvnwdy1x5"]
+
+[node name="Inventory" type="CanvasLayer"]
+
+[node name="BackgroundPanel" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

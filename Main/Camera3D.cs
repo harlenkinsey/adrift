@@ -25,34 +25,34 @@ public partial class Camera3D : Godot.Camera3D
 			Transform = Transform.RotatedLocal(Transform.Basis.X, -mouseInput.Y * (float)delta * 0.001f);
 		}
 
-		CollapseCooldown -= (float)delta;
+		//CollapseCooldown -= (float)delta;
 	}
 
-	private const float RayLength = 1000.0f;
+	//private const float RayLength = 1000.0f;
 
-	public override void _PhysicsProcess(double delta)
-	{
-		if (Input.IsMouseButtonPressed(MouseButton.Left))
-		{
-			var spaceState = GetWorld3D().DirectSpaceState;
-			var from = ProjectRayOrigin(GetTree().Root.GetVisibleRect().Size / 2f);
-			var to = from + ProjectRayNormal(GetTree().Root.GetVisibleRect().Size / 2f) *
-			RayLength;
+	//public override void _PhysicsProcess(double delta)
+	//{
+	//if (Input.IsMouseButtonPressed(MouseButton.Left))
+	//{
+	//var spaceState = GetWorld3D().DirectSpaceState;
+	//var from = ProjectRayOrigin(GetTree().Root.GetVisibleRect().Size / 2f);
+	//var to = from + ProjectRayNormal(GetTree().Root.GetVisibleRect().Size / 2f) *
+	//RayLength;
 
-			var query = PhysicsRayQueryParameters3D.Create(from, to);
-			query.CollideWithAreas = false;
+	//var query = PhysicsRayQueryParameters3D.Create(from, to);
+	//query.CollideWithAreas = false;
 
-			Vector3 intersectPosition = (Vector3)spaceState.IntersectRay(query)["position"];
-			TryCollapseFaceAtPosition(intersectPosition);
-		}
-	}
+	//Vector3 intersectPosition = (Vector3)spaceState.IntersectRay(query)["position"];
+	//TryCollapseFaceAtPosition(intersectPosition);
+	//}
+	//}
 
-	public void TryCollapseFaceAtPosition(Vector3 position)
-	{
-		if (CollapseCooldown <= 0f)
-		{
-			PV.CurrentPlanet.CollapseFaceAtPosition(position);
-			CollapseCooldown = 1f;
-		}
-	}
+	//public void TryCollapseFaceAtPosition(Vector3 position)
+	//{
+	//if (CollapseCooldown <= 0f)
+	//{
+	//PV.CurrentPlanet.CollapseFaceAtPosition(position);
+	//CollapseCooldown = 1f;
+	//}
+	//}
 }

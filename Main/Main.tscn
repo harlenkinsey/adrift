@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://cr54lal0m8w80"]
+[gd_scene load_steps=9 format=3 uid="uid://cr54lal0m8w80"]
 
 [ext_resource type="PackedScene" uid="uid://eogljr0nc2dw" path="res://Singletons/Settings/Settings.tscn" id="1_3nbcj"]
 [ext_resource type="PackedScene" uid="uid://cejcdf35mfnhb" path="res://Main/PauseMenu/PauseMenu.tscn" id="1_f5yot"]
 [ext_resource type="PackedScene" uid="uid://b3xil6uro4oxr" path="res://Main/Player/Player.tscn" id="2_d6xof"]
-[ext_resource type="PackedScene" uid="uid://ds71se8buopqu" path="res://Main/Planet/Planet.tscn" id="3_6nht1"]
 [ext_resource type="Script" path="res://Main/ThirdPersonCamera.cs" id="3_g25ws"]
+[ext_resource type="Texture2D" uid="uid://dnrtc3s2xrvqi" path="res://Main/Planet/GrassTexture.jpg" id="5_0yru8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ptaus"]
+albedo_texture = ExtResource("5_0yru8")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0blyr"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_4ru0m"]
 
 [node name="Main" type="Node3D"]
 
@@ -24,4 +31,12 @@ script = ExtResource("3_g25ws")
 [node name="Player" parent="." instance=ExtResource("2_d6xof")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.1601, 0.74559, 0)
 
-[node name="Planet" parent="." instance=ExtResource("3_6nht1")]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ptaus")
+mesh = SubResource("PlaneMesh_0blyr")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_4ru0m")

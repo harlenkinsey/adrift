@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cayvwm6owxe0q"
-path="res://.godot/imported/HeartIcon.png-bf2007946c5f9aaf45c16caffb9bd4da.ctex"
+uid="uid://cncehvu3sjqa8"
+path="res://.godot/imported/LightningBoltIcon.png-1f3f1c558620d8f0e7d56396f4bc3de0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main/Player/UI/HeartIcon.png"
-dest_files=["res://.godot/imported/HeartIcon.png-bf2007946c5f9aaf45c16caffb9bd4da.ctex"]
+source_file="res://Main/Player/UI/HUD/LightningBoltIcon.png"
+dest_files=["res://.godot/imported/LightningBoltIcon.png-1f3f1c558620d8f0e7d56396f4bc3de0.ctex"]
 
 [params]
 
