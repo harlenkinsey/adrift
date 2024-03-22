@@ -1,0 +1,91 @@
+[gd_scene load_steps=8 format=3 uid="uid://us1fs4cjd881"]
+
+[ext_resource type="Texture2D" uid="uid://cayvwm6owxe0q" path="res://Main/Player/UI/HeartIcon.png" id="1_d4v3f"]
+[ext_resource type="Script" path="res://Singletons/HUDManager.cs" id="1_uydue"]
+[ext_resource type="Texture2D" uid="uid://cncehvu3sjqa8" path="res://Main/Player/UI/LightningBoltIcon.png" id="2_356fh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t8n5q"]
+bg_color = Color(0.294118, 0.294118, 0.294118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_texca"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1pyu"]
+bg_color = Color(0.294118, 0.294118, 0.294118, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hqaqd"]
+bg_color = Color(0, 0, 1, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_uydue")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -104.0
+offset_right = 230.0
+grow_vertical = 0
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_bottom = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer1" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HeartIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("1_d4v3f")
+expand_mode = 4
+
+[node name="StaminaIcon" type="TextureRect" parent="MarginContainer/HBoxContainer/VBoxContainer1"]
+custom_minimum_size = Vector2(35, 35)
+layout_mode = 2
+texture = ExtResource("2_356fh")
+expand_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 35)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_t8n5q")
+theme_override_styles/fill = SubResource("StyleBoxFlat_texca")
+value = 50.0
+show_percentage = false
+
+[node name="StaminaBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 35)
+layout_mode = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_i1pyu")
+theme_override_styles/fill = SubResource("StyleBoxFlat_hqaqd")
+value = 50.0
+show_percentage = false
