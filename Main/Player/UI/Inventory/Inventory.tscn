@@ -1,11 +1,106 @@
-[gd_scene format=3 uid="uid://dl4clvnwdy1x5"]
+[gd_scene load_steps=2 format=3 uid="uid://dl4clvnwdy1x5"]
+
+[ext_resource type="PackedScene" uid="uid://burx187b2q8f2" path="res://Main/Player/UI/Inventory/ItemSlot/ItemSlot.tscn" id="1_gb6wa"]
 
 [node name="Inventory" type="CanvasLayer"]
 
 [node name="BackgroundPanel" type="Panel" parent="."]
-modulate = Color(1, 1, 1, 0.501961)
+modulate = Color(1, 1, 1, 0.4)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -128.0
+offset_top = -133.0
+offset_right = 128.0
+offset_bottom = 133.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="HSeparator2" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 249)
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ItemSlot" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ItemSlot" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ItemSlot" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ItemSlot" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 59)
+layout_mode = 2

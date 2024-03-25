@@ -1,6 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://burx187b2q8f2"]
+[gd_scene load_steps=7 format=3 uid="uid://burx187b2q8f2"]
 
+[ext_resource type="Script" path="res://Main/Player/UI/Inventory/ItemSlot/ItemSlot.cs" id="1_f60n8"]
 [ext_resource type="Texture2D" uid="uid://crjhleqs0mwa8" path="res://Main/Player/UI/Inventory/ItemPlaceholder.png" id="1_lopkq"]
+[ext_resource type="Texture2D" uid="uid://jx7wgntg3yoo" path="res://Main/Player/UI/Inventory/ItemSlot/ItemRarity.png" id="1_t24w6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws0aw"]
 bg_color = Color(0.167969, 0.167969, 0.167969, 1)
@@ -11,28 +13,39 @@ border_width_bottom = 1
 border_color = Color(0.933333, 0.933333, 0.933333, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_us83v"]
-font_size = 30
+font_size = 15
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gi41u"]
 
 [node name="ItemSlot" type="Panel"]
 modulate = Color(1, 1, 1, 0.780392)
-custom_minimum_size = Vector2(256, 256)
+custom_minimum_size = Vector2(128, 128)
+offset_right = 128.0
+offset_bottom = 128.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ws0aw")
+script = ExtResource("1_f60n8")
+
+[node name="RarityTextureRect" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.431373)
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 0
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_t24w6")
+expand_mode = 2
+
+[node name="IconTextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 2
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_lopkq")
+expand_mode = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -127.0
-offset_top = -128.0
-offset_right = 127.0
+offset_right = 128.0
 offset_bottom = 128.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -40,20 +53,20 @@ layout_mode = 2
 [node name="VSeparator" type="VSeparator" parent="VBoxContainer/HBoxContainer"]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
+theme_override_constants/separation = 1
 
 [node name="CountLabel" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "x100"
 label_settings = SubResource("LabelSettings_us83v")
 
-[node name="IconTextureRect" type="TextureRect" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 183)
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
-texture = ExtResource("1_lopkq")
-expand_mode = 2
+theme_override_constants/separation = 84
 
 [node name="DurabilityProgressBar" type="ProgressBar" parent="VBoxContainer"]
-custom_minimum_size = Vector2(0, 20)
+custom_minimum_size = Vector2(0, 10)
 layout_mode = 2
 theme_override_constants/outline_size = 0
 theme_override_styles/fill = SubResource("StyleBoxFlat_gi41u")
