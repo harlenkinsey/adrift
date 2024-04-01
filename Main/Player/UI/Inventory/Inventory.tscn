@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dl4clvnwdy1x5"]
+[gd_scene load_steps=3 format=3 uid="uid://dl4clvnwdy1x5"]
 
+[ext_resource type="Script" path="res://Main/Player/UI/Inventory/InventoryManager.cs" id="1_08erq"]
 [ext_resource type="PackedScene" uid="uid://burx187b2q8f2" path="res://Main/Player/UI/Inventory/ItemSlot/ItemSlot.tscn" id="1_gb6wa"]
 
 [node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_08erq")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0.4)
@@ -31,52 +33,52 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 249)
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Row1" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ItemSlot" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot" parent="VBoxContainer/Row1" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
-[node name="ItemSlot2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot2" parent="VBoxContainer/Row1" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
-[node name="ItemSlot3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot3" parent="VBoxContainer/Row1" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
-[node name="ItemSlot4" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot4" parent="VBoxContainer/Row1" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="ItemSlot" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_gb6wa")]
-layout_mode = 2
-
-[node name="ItemSlot2" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_gb6wa")]
-layout_mode = 2
-
-[node name="ItemSlot3" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_gb6wa")]
-layout_mode = 2
-
-[node name="ItemSlot4" parent="VBoxContainer/HBoxContainer2" instance=ExtResource("1_gb6wa")]
-layout_mode = 2
-
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Row2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ItemSlot" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot" parent="VBoxContainer/Row2" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
-[node name="ItemSlot2" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot2" parent="VBoxContainer/Row2" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
-[node name="ItemSlot3" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot3" parent="VBoxContainer/Row2" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
-[node name="ItemSlot4" parent="VBoxContainer/HBoxContainer3" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot4" parent="VBoxContainer/Row2" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="Row3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ItemSlot" parent="VBoxContainer/Row3" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot2" parent="VBoxContainer/Row3" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot3" parent="VBoxContainer/Row3" instance=ExtResource("1_gb6wa")]
+layout_mode = 2
+
+[node name="ItemSlot4" parent="VBoxContainer/Row3" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
@@ -84,20 +86,20 @@ modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+[node name="Row4" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="ItemSlot" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot" parent="VBoxContainer/Row4" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
-[node name="ItemSlot2" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot2" parent="VBoxContainer/Row4" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
-[node name="ItemSlot3" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot3" parent="VBoxContainer/Row4" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
-[node name="ItemSlot4" parent="VBoxContainer/HBoxContainer4" instance=ExtResource("1_gb6wa")]
+[node name="ItemSlot4" parent="VBoxContainer/Row4" instance=ExtResource("1_gb6wa")]
 layout_mode = 2
 
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]
