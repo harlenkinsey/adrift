@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dl4clvnwdy1x5"]
 
-[ext_resource type="Script" path="res://Main/Player/UI/Inventory/InventoryManager.cs" id="1_08erq"]
 [ext_resource type="PackedScene" uid="uid://burx187b2q8f2" path="res://Main/Player/UI/Inventory/ItemSlot/ItemSlot.tscn" id="1_gb6wa"]
+[ext_resource type="Script" path="res://Main/Player/UI/Inventory/PlayerInventoryManager.cs" id="1_te72k"]
 
 [node name="Inventory" type="CanvasLayer"]
-script = ExtResource("1_08erq")
+script = ExtResource("1_te72k")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0.4)
