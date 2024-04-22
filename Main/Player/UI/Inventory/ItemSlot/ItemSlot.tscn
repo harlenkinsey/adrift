@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Main/Player/UI/Inventory/ItemSlot/ItemSlot.cs" id="1_f60n8"]
 [ext_resource type="Texture2D" uid="uid://crjhleqs0mwa8" path="res://Main/Player/UI/Inventory/ItemPlaceholder.png" id="1_lopkq"]
-[ext_resource type="Texture2D" uid="uid://jx7wgntg3yoo" path="res://Main/Player/UI/Inventory/ItemSlot/ItemRarity.png" id="1_t24w6"]
+[ext_resource type="Texture2D" uid="uid://jx7wgntg3yoo" path="res://Main/Player/UI/Inventory/ItemSlot/ItemQuality.png" id="2_cfso1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ws0aw"]
 bg_color = Color(0.167969, 0.167969, 0.167969, 1)
@@ -25,13 +25,13 @@ offset_bottom = 128.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_ws0aw")
 script = ExtResource("1_f60n8")
 
-[node name="RarityTextureRect" type="TextureRect" parent="."]
+[node name="QualityTextureRect" type="TextureRect" parent="."]
 modulate = Color(1, 1, 1, 0.431373)
 custom_minimum_size = Vector2(128, 128)
 layout_mode = 0
 offset_right = 128.0
 offset_bottom = 128.0
-texture = ExtResource("1_t24w6")
+texture = ExtResource("2_cfso1")
 expand_mode = 2
 
 [node name="IconTextureRect" type="TextureRect" parent="."]

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://jx7wgntg3yoo"
-path="res://.godot/imported/ItemRarity.png-00a2fd8280adc4e1e68268bcdbc50172.ctex"
+path="res://.godot/imported/ItemQuality.png-0d61a7fa3d4c67c04fee983f75476ecd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Main/Player/UI/Inventory/ItemSlot/ItemRarity.png"
-dest_files=["res://.godot/imported/ItemRarity.png-00a2fd8280adc4e1e68268bcdbc50172.ctex"]
+source_file="res://Main/Player/UI/Inventory/ItemSlot/ItemQuality.png"
+dest_files=["res://.godot/imported/ItemQuality.png-0d61a7fa3d4c67c04fee983f75476ecd.ctex"]
 
 [params]
 

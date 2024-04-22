@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://dl4clvnwdy1x5"]
 
 [ext_resource type="PackedScene" uid="uid://burx187b2q8f2" path="res://Main/Player/UI/Inventory/ItemSlot/ItemSlot.tscn" id="1_gb6wa"]
-[ext_resource type="Script" path="res://Main/Player/UI/Inventory/PlayerInventoryManager.cs" id="1_te72k"]
+[ext_resource type="Script" path="res://Singletons/PlayerInventoryManager.cs" id="1_t3yox"]
 
 [node name="Inventory" type="CanvasLayer"]
-script = ExtResource("1_te72k")
+script = ExtResource("1_t3yox")
 
 [node name="BackgroundPanel" type="Panel" parent="."]
 modulate = Color(1, 1, 1, 0.4)
@@ -38,15 +38,19 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="ItemSlot" parent="VBoxContainer/Row1" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot2" parent="VBoxContainer/Row1" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot3" parent="VBoxContainer/Row1" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot4" parent="VBoxContainer/Row1" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="Row2" type="HBoxContainer" parent="VBoxContainer"]
@@ -54,15 +58,19 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="ItemSlot" parent="VBoxContainer/Row2" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot2" parent="VBoxContainer/Row2" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot3" parent="VBoxContainer/Row2" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot4" parent="VBoxContainer/Row2" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="Row3" type="HBoxContainer" parent="VBoxContainer"]
@@ -70,15 +78,19 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="ItemSlot" parent="VBoxContainer/Row3" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot2" parent="VBoxContainer/Row3" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot3" parent="VBoxContainer/Row3" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot4" parent="VBoxContainer/Row3" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
@@ -91,15 +103,19 @@ layout_mode = 2
 theme_override_constants/separation = 10
 
 [node name="ItemSlot" parent="VBoxContainer/Row4" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot2" parent="VBoxContainer/Row4" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot3" parent="VBoxContainer/Row4" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="ItemSlot4" parent="VBoxContainer/Row4" instance=ExtResource("1_gb6wa")]
+modulate = Color(1, 1, 1, 1)
 layout_mode = 2
 
 [node name="HSeparator3" type="HSeparator" parent="VBoxContainer"]

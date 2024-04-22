@@ -21,6 +21,8 @@ Persistence="*res://Singletons/Persistence.cs"
 SettingsManager="*res://Singletons/Settings/SettingsManager.cs"
 PlayerVariables="*res://Singletons/PlayerVariables.cs"
 HudManager="*res://Singletons/HUDManager.cs"
+PlayerInventoryManager="*res://Singletons/PlayerInventoryManager.cs"
+InventoryData="*res://Singletons/InventoryData.cs"
 
 [display]
 

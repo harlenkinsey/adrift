@@ -41,33 +41,11 @@ public partial class PlayerInventoryManager : CanvasLayer
 		}
 	}
 
-	public override void _Process(double delta)
+	public void UpdateInventory()
 	{
+		for (int i = 0; i < PlayerInventory.Items.Length; i++)
+		{
+			InventorySlots[i].IconTextureRect.Texture = PlayerInventory.Items[i].Icon;
+		}
 	}
-}
-
-public class Inventory
-{
-	public Item[] Items;
-
-
-	public Inventory(int size)
-	{
-		Items = new Item[size];
-	}
-
-	public Item GetItem(int index)
-	{
-		return Items[index];
-	}
-}
-
-public class Item
-{
-	public int ItemId;
-	public int Rarity;
-	public int Count;
-	public int Durability;
-	public bool Stackable;
-	public bool Durable;
 }
