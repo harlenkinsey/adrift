@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Main/Player/Player.cs" id="1_cpo0k"]
 [ext_resource type="Script" path="res://Main/Camera3D.cs" id="2_ourgw"]
 [ext_resource type="Texture2D" uid="uid://8qdvopqnhtgj" path="res://Main/Planet/MountainTexture.jpg" id="3_w0cjx"]
-[ext_resource type="PackedScene" uid="uid://us1fs4cjd881" path="res://Main/Player/UI/HUD.tscn" id="4_nudfq"]
+[ext_resource type="PackedScene" uid="uid://us1fs4cjd881" path="res://Main/Player/UI/HUD/HUD.tscn" id="4_nudfq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ocn5j"]
 
